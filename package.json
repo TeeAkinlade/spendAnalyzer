@@ -5,8 +5,12 @@
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/index.js",
+    "start": "node server/index.js",
     "client": "npm run dev --prefix client",
     "install:all": "npm install && npm install --prefix client"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

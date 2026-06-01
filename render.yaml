@@ -1,0 +1,11 @@
+# Render Blueprint — backend API (repo root, NOT client/)
+services:
+  - type: web
+    name: spend-analyzer-api
+    runtime: node
+    rootDir: .
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
