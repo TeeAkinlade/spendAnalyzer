@@ -45,6 +45,11 @@ function formatMoney(n) {
   return new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(n)
 }
 
+function numberInputValue(n) {
+  if (n === '' || n === undefined || n === null || n === 0) return ''
+  return String(n)
+}
+
 function newItem() {
   return {
     id: crypto.randomUUID(),
@@ -372,22 +377,13 @@ export default function BudgetPlanner() {
                           value={it.type}
                           onChange={(e) => updateItem(it.id, { type: e.target.value })}
                         >
-                          <option value="fixed">Fixed</option>
-                          <option value="percent">Percent</option>
+                          <option value="fixed">Fixed amount</option>
+                          <option value="percent">Percentage</option>
                         </select>
                       </div>
-                    ) : (
-                      <div className="lg:col-span-3">
-                        <label className="app-label block text-xs">Type</label>
-                        <input
-                          className="app-input mt-1 cursor-not-allowed text-sm opacity-70"
-                          value="Fixed"
-                          disabled
-                        />
-                      </div>
-                    )}
+                    ) : null}
 
-                    <div className={save && it.type === 'percent' ? 'lg:col-span-5' : 'lg:col-span-5'}>
+                    <div className={save ? 'lg:col-span-5' : 'lg:col-span-8'}>
                       {save && it.type === 'percent' ? (
                         <>
                           <label className="app-label block text-xs">Percent (%)</label>
@@ -397,9 +393,12 @@ export default function BudgetPlanner() {
                             min="0"
                             max="100"
                             className="app-input mt-1 text-sm"
-                            value={it.percent ?? 0}
+                            placeholder="e.g. 25"
+                            value={numberInputValue(it.percent)}
                             onChange={(e) =>
-                              updateItem(it.id, { percent: e.target.value === '' ? 0 : Number(e.target.value) })
+                              updateItem(it.id, {
+                                percent: e.target.value === '' ? 0 : Number(e.target.value),
+                              })
                             }
                           />
                         </>
@@ -411,9 +410,12 @@ export default function BudgetPlanner() {
                             step="1"
                             min="0"
                             className="app-input mt-1 text-sm"
-                            value={it.amount ?? 0}
+                            placeholder="e.g. 40000"
+                            value={numberInputValue(it.amount)}
                             onChange={(e) =>
-                              updateItem(it.id, { amount: e.target.value === '' ? 0 : Number(e.target.value) })
+                              updateItem(it.id, {
+                                amount: e.target.value === '' ? 0 : Number(e.target.value),
+                              })
                             }
                           />
                         </>
