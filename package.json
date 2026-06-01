@@ -1,0 +1,30 @@
+{
+  "name": "spend-analyzer",
+  "version": "1.0.0",
+  "description": "Budget & expense planner with notifications",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server/index.js",
+    "client": "npm run dev --prefix client",
+    "install:all": "npm install && npm install --prefix client"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2",
+    "jsonwebtoken": "^9.0.2",
+    "lowdb": "^7.0.1",
+    "mongoose": "^8.4.0",
+    "morgan": "^1.10.1",
+    "nanoid": "^5.1.11",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.10.1",
+    "uuid": "^10.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.3"
+  }
+}

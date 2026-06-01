@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --default-font-family: var(--font-sans);
+}
+
+:root {
+  color-scheme: light dark;
+  --app-bg: #eef2ff;
+  --app-bg-accent: #e0e7ff;
+  --app-surface: #ffffff;
+  --app-surface-muted: #f8fafc;
+  --app-border: #e2e8f0;
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
+  --app-primary: #4f46e5;
+  --app-primary-hover: #4338ca;
+  --app-primary-soft: #eef2ff;
+  --app-success: #16a34a;
+  --app-success-soft: #dcfce7;
+  --app-danger: #dc2626;
+  --app-danger-soft: #fee2e2;
+  --app-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(79, 70, 229, 0.08);
+  --app-nav-bg: rgba(255, 255, 255, 0.88);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --app-bg: #0b1120;
+    --app-bg-accent: #111827;
+    --app-surface: #151d2e;
+    --app-surface-muted: #1a2438;
+    --app-border: #2a3548;
+    --app-text: #f1f5f9;
+    --app-text-muted: #94a3b8;
+    --app-primary: #818cf8;
+    --app-primary-hover: #a5b4fc;
+    --app-primary-soft: #1e1b4b;
+    --app-success: #4ade80;
+    --app-success-soft: #14532d;
+    --app-danger: #f87171;
+    --app-danger-soft: #450a0a;
+    --app-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
+    --app-nav-bg: rgba(21, 29, 46, 0.92);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  background: linear-gradient(165deg, var(--app-bg) 0%, var(--app-bg-accent) 45%, var(--app-bg) 100%);
+  color: var(--app-text);
+}
+
+@layer components {
+  .app-shell {
+    @apply mx-auto flex min-h-dvh max-w-6xl flex-col px-4 pb-24 pt-4 sm:px-6 md:pb-8 md:pt-6;
+  }
+
+  .app-header {
+    @apply sticky top-0 z-30 mb-4 rounded-2xl border px-4 py-3 backdrop-blur-md sm:px-5 sm:py-4;
+    background: var(--app-nav-bg);
+    border-color: var(--app-border);
+    box-shadow: var(--app-shadow);
+  }
+
+  .app-card {
+    @apply rounded-2xl border p-4 sm:p-5;
+    background: var(--app-surface);
+    border-color: var(--app-border);
+    box-shadow: var(--app-shadow);
+  }
+
+  .app-card-muted {
+    @apply rounded-xl border p-3 sm:p-4;
+    background: var(--app-surface-muted);
+    border-color: var(--app-border);
+  }
+
+  .app-label {
+    @apply text-sm font-medium;
+    color: var(--app-text);
+  }
+
+  .app-muted {
+    @apply text-sm;
+    color: var(--app-text-muted);
+  }
+
+  .app-input {
+    @apply w-full rounded-xl border px-3 py-2.5 text-sm outline-none transition focus:ring-2;
+    background: var(--app-surface);
+    border-color: var(--app-border);
+    color: var(--app-text);
+  }
+
+  .app-input:focus {
+    border-color: var(--app-primary);
+    --tw-ring-color: color-mix(in srgb, var(--app-primary) 35%, transparent);
+  }
+
+  .app-btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold text-white transition disabled:opacity-50;
+    background: var(--app-primary);
+  }
+
+  .app-btn-primary:hover:not(:disabled) {
+    background: var(--app-primary-hover);
+  }
+
+  .app-btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border px-4 py-2.5 text-sm font-medium transition disabled:opacity-50;
+    background: var(--app-surface);
+    border-color: var(--app-border);
+    color: var(--app-text);
+  }
+
+  .app-btn-secondary:hover:not(:disabled) {
+    background: var(--app-surface-muted);
+  }
+
+  .app-btn-icon {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-xl border transition;
+    background: var(--app-surface);
+    border-color: var(--app-border);
+    color: var(--app-text);
+  }
+
+  .app-btn-icon:hover {
+    background: var(--app-primary-soft);
+    border-color: var(--app-primary);
+    color: var(--app-primary);
+  }
+
+  .app-btn-icon-active {
+    background: var(--app-primary);
+    border-color: var(--app-primary);
+    color: #fff;
+  }
+
+  .app-segment {
+    @apply flex rounded-xl border p-1;
+    background: var(--app-surface-muted);
+    border-color: var(--app-border);
+  }
+
+  .app-segment-btn {
+    @apply flex-1 rounded-lg px-3 py-2 text-sm font-medium transition;
+    color: var(--app-text-muted);
+  }
+
+  .app-segment-btn-active {
+    background: var(--app-surface);
+    color: var(--app-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  .app-tab-pill {
+    @apply rounded-full px-3 py-1.5 text-xs font-semibold transition;
+  }
+
+  .app-tab-pill-active {
+    background: var(--app-primary);
+    color: #fff;
+  }
+
+  .app-tab-pill-inactive {
+    @apply border;
+    background: var(--app-surface);
+    border-color: var(--app-border);
+    color: var(--app-text-muted);
+  }
+
+  .app-stat {
+    @apply rounded-xl border p-3;
+    background: var(--app-surface-muted);
+    border-color: var(--app-border);
+  }
+
+  .app-error {
+    @apply text-sm;
+    color: var(--app-danger);
+  }
+
+  .app-success-text {
+    @apply text-sm;
+    color: var(--app-success);
+  }
+
+  .app-modal-overlay {
+    @apply fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4;
+    background: rgba(15, 23, 42, 0.55);
+  }
+
+  .app-modal {
+    @apply max-h-[90dvh] w-full overflow-y-auto rounded-t-2xl border p-5 sm:max-w-lg sm:rounded-2xl;
+    background: var(--app-surface);
+    border-color: var(--app-border);
+    box-shadow: var(--app-shadow);
+  }
+
+  .app-bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 z-40 border-t px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 lg:hidden;
+    background: var(--app-nav-bg);
+    border-color: var(--app-border);
+    backdrop-filter: blur(12px);
+  }
+
+  .app-nav-item {
+    @apply flex flex-1 flex-col items-center gap-1 rounded-xl py-2 text-[11px] font-medium transition;
+    color: var(--app-text-muted);
+  }
+
+  .app-nav-item-active {
+    color: var(--app-primary);
+    background: var(--app-primary-soft);
+  }
+
+  .item-done {
+    border-color: var(--app-success) !important;
+    background: var(--app-success-soft) !important;
+  }
+
+  .app-toast {
+    @apply fixed left-4 right-4 top-4 z-[60] rounded-xl border px-4 py-3 text-sm font-medium shadow-lg sm:left-auto sm:right-4 sm:max-w-sm;
+    background: var(--app-success-soft);
+    border-color: var(--app-success);
+    color: var(--app-success);
+  }
+}

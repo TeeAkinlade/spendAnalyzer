@@ -1,0 +1,7 @@
+# Ignore database writes so nodemon does not restart on every LowDB save
+server/data/**
+
+# Optional ignore patterns
+node_modules/**
+client/node_modules/**
+.env

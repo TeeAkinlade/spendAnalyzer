@@ -1,0 +1,46 @@
+{
+  "budget": {
+    "income": 800000,
+    "items": [
+      {
+        "name": "Saving",
+        "type": "percent",
+        "percent": 20
+      },
+      {
+        "name": "Feeding",
+        "type": "fixed",
+        "amount": 40000
+      }
+    ]
+  },
+  "reminders": [
+    {
+      "id": "gH5h3NA4vwfDC7ZGivaQ2",
+      "title": "pay rent",
+      "message": "pay rent",
+      "scheduledAt": "2026-05-30T21:37:00.000Z",
+      "createdAt": "2026-05-26T18:38:07.293Z",
+      "status": "scheduled",
+      "sentAt": null
+    },
+    {
+      "id": "I7TzbIwaT-kUePY29Dx74",
+      "title": "Test",
+      "message": "hello",
+      "scheduledAt": "2026-05-26T18:56:01.262Z",
+      "createdAt": "2026-05-26T18:55:01.830Z",
+      "status": "scheduled",
+      "sentAt": null
+    },
+    {
+      "id": "TkoR4C-hJdtNLJ8rM8QCJ",
+      "title": "Pay rent",
+      "message": "Pay rent",
+      "scheduledAt": "2026-05-26T19:01:00.000Z",
+      "createdAt": "2026-05-26T18:59:57.931Z",
+      "status": "scheduled",
+      "sentAt": null
+    }
+  ]
+}
